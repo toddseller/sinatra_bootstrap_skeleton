@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 
+    loads bootstrap
+  -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" href="/css/application.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/application.js"></script>
+
+  <title></title>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <% if session[:user_id] %>
+          <div class="navbar-brand">
+
+          </div>
+        <% else %>
+          <div class="navbar-brand">
+
+          </div>
+        <% end %>
+      </div>
+      <% if session[:user_id] %>
+        <div class="navbar-right">
+          <p class="navbar-text"><%= "Signed in as #{session[:name]}" %></p>
+          <form id="sign-in" class="navbar-form navbar-right" action="/users/logout" method="POST">
+            <button type="submit" class="btn btn-default">Sign out</button>
+          </form>
+        </div>
+      <% else %>
+        <div id="sign-in" class="navbar-right">
+          <button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#logIn">Sign in</button>
+        </div>
+      <% end %>
+    </div>
+  </nav>
+
+  <%= yield %>
+
+  <div class="modal fade" id="logIn" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Sign in!</h4>
+        </div>
+        <div class="modal-body">
+          <form action='/users/login' method="POST">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input class="form-control" type="text" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-danger">Sign in</button>
+              <p class="text-center">Not a registered user? Please register <a class="register" href="/users/new">here</a>.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

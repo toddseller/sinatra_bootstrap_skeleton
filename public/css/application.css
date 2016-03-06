@@ -1,0 +1,33 @@
+#sign-in {
+  margin-right: 25px;
+}
+
+#logIn .modal-header {
+  background-color: #d9534f;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center;
+
+}
+
+#logIn .modal-title {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 2.5em;
+}
+
+.registration {
+  margin-top: 25px;
+  padding: 25px;
+  width: 450px;
+  background-color: #d9534f;
+  height: 600px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.errors {
+  color: #000000;
+}
